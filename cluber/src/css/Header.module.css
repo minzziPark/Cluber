@@ -1,4 +1,5 @@
-.header {
+.header .home_rog {
+  display: flex;
 }
 
 .title {

@@ -5,11 +5,12 @@ import style from "../css/Header.module.css";
 export default function Header() {
   const [isLogin, setIsLogin] = useState(false);
   return (
-    <div style={{ style }}>
+    <div>
       <div className={`${style.header}`}>
-        <h1 className={`${style.title}`}>Cluber</h1>
-        <div>
+        <div className={`${style.title}`}>Cluber</div>
+        <div className={`${style.home_rog}`}>
           <Link to="/">Home</Link>
+          <div>|</div>
           <button>{isLogin ? "Logout" : "Login"}</button>
         </div>
       </div>
