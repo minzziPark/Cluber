@@ -1,0 +1,18 @@
+.header {
+}
+
+.title {
+  text-align: center;
+  color: #5f1997;
+  font-family: "Chonburi";
+  font-size: 50px;
+  letter-spacing: 0.1px;
+  line-height: 20px;
+  margin-top: 47px;
+  font-weight: normal;
+}
+
+.line {
+  border-color: #cda9f2;
+  width: 2400px;
+}
