@@ -16,4 +16,36 @@
 .line {
   border-color: #cda9f2;
   width: 2400px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.home_rog {
+  color: #5f1997;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  font-size: 20px;
+  position: absolute;
+  right: 350px;
+  top: 53px;
+}
+
+.link {
+  padding: 5px;
+  font-family: "Chonburi";
+  text-decoration-line: none;
+}
+
+.menu {
+  background-color: #cda9f2;
+  opacity: 0.2;
+  height: 50px;
+  width: 100%;
+}
+
+.detail_menu {
+  text-align: center;
+  color: #000000;
+  text-decoration-line: none;
 }

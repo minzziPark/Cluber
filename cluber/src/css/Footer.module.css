@@ -1,0 +1,8 @@
+.footer {
+  font-family: "AbhayaLibre-Medium";
+  font-size: 20px;
+  text-align: center;
+  color: #7b7b7b;
+  position: relative;
+  transform: translateY(-100%);
+}

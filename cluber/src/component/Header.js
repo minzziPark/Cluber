@@ -9,17 +9,26 @@ export default function Header() {
       <div className={`${style.header}`}>
         <div className={`${style.title}`}>Cluber</div>
         <div className={`${style.home_rog}`}>
-          <Link to="/">Home</Link>
-          <div>|</div>
-          <button>{isLogin ? "Logout" : "Login"}</button>
+          <Link to="/" className={`${style.link}`}>
+            Home
+          </Link>
+          <div className={`${style.link}`}>|</div>
+          <Link to="/login_page" className={`${style.link}`}>
+            {isLogin ? "Logout" : "Login"}
+          </Link>
         </div>
       </div>
       <div>
         <hr className={`${style.line}`} />
       </div>
-      <div>
-        <Link to="/introclub">공동체 소개</Link>
-        <Link to="/recruiting">리쿠르팅</Link>
+      <div className={`${style.menu}`}>
+        <Link to="/introclub" className={`${style.detail_menu}`}>
+          공동체 소개
+        </Link>
+        <div className={`${style.detail_menu}`}>|</div>
+        <Link to="/recruiting" className={`${style.detail_menu}`}>
+          리쿠르팅
+        </Link>
       </div>
     </div>
   );
