@@ -11,3 +11,10 @@
   font-weight: 100;
   src: url("./AbhayaLibre-Medium.woff") format("woff");
 }
+
+@font-face {
+  font-family: "Roboto-Regular";
+  font-style: normal;
+  font-weight: 100;
+  src: url("./Roboto-Regular.woff") format("woff");
+}
