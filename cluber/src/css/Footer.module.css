@@ -3,6 +3,16 @@
   font-size: 20px;
   text-align: center;
   color: #7b7b7b;
+  position: absolute;
   position: relative;
-  transform: translateY(-100%);
+}
+
+.footer_box {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
 }

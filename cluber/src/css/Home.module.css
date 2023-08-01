@@ -1,0 +1,24 @@
+.img_part {
+  width: 100%;
+}
+
+.detail_menu {
+  color: #000000;
+  opacity: 1;
+  text-decoration-line: none;
+  padding: 15px;
+  font-size: 18px;
+  font-family: "Roboto-Regular";
+}
+
+.nav_menu {
+  display: flex;
+  height: 45px;
+  background-color: rgba(205, 169, 242, 0.2);
+  width: 100%;
+}
+
+.menu {
+  margin: 0 auto;
+  display: flex;
+}

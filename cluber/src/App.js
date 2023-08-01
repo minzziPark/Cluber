@@ -5,11 +5,12 @@ import IntroClub from "./component/IntroClub";
 import Recruiting from "./component/Recruiting";
 import Footer from "./component/Footer";
 import Rogin from "./component/Rogin";
+import style from "./css/App.module.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className={`${style.app}`}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

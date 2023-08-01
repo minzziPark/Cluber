@@ -1,5 +1,7 @@
-.header .home_rog {
+.header {
   display: flex;
+  position: relative;
+  justify-content: center;
 }
 
 .title {
@@ -13,15 +15,8 @@
   font-weight: normal;
 }
 
-.line {
-  border-color: #cda9f2;
-  width: 2400px;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
 .home_rog {
+  display: flex;
   color: #5f1997;
   font-weight: normal;
   line-height: 20px;
@@ -30,6 +25,14 @@
   position: absolute;
   right: 350px;
   top: 53px;
+}
+
+.line {
+  border-color: #cda9f2;
+  width: 2400px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 .link {

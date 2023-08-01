@@ -8,6 +8,7 @@ export default function Header() {
     <div>
       <div className={`${style.header}`}>
         <div className={`${style.title}`}>Cluber</div>
+
         <div className={`${style.home_rog}`}>
           <Link to="/" className={`${style.link}`}>
             Home
@@ -20,17 +21,6 @@ export default function Header() {
       </div>
       <div>
         <hr className={`${style.line}`} />
-      </div>
-      <div className={`${style.nav_menu}`}>
-        <div className={`${style.menu}`}>
-          <Link to="/introclub" className={`${style.detail_menu}`}>
-            공동체 소개
-          </Link>
-          <div className={`${style.detail_menu}`}>|</div>
-          <Link to="/recruiting" className={`${style.detail_menu}`}>
-            리쿠르팅
-          </Link>
-        </div>
       </div>
     </div>
   );
