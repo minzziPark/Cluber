@@ -1,14 +1,56 @@
 import { useState } from "react";
-import Button from "@mui/material/Button";
 import style from "../css/IntroClub.module.css";
 import { Link } from "react-router-dom";
-import ListItem from "@mui/joy/ListItem";
-import Done from "@mui/icons-material/Done";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/joy/ButtonGroup";
+import { styled } from "@mui/material";
+import { Done } from "@mui/icons-material";
 import Checkbox from "@mui/joy/Checkbox";
-import List from "@mui/joy/List";
+import Typography from "@mui/joy/Typography";
+
+const AllBox = styled(Button)(() => ({
+  width: 50,
+  height: 45,
+  borderRadius: "10px",
+  border: "1px solid",
+  borderColor: "#7B7B7B",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+const ButtonBox = styled(ButtonGroup)(() => ({
+  width: 450,
+  height: 45,
+  borderRadius: "10px",
+  borderWidth: "1px",
+  borderStyle: "solid",
+  borderColor: "#7B7B7B",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+const ClubCheckButton = styled(Button)(() => ({
+  width: 150,
+  height: 45,
+  justifyContent: "center",
+  alignItems: "center",
+  color: "black",
+  fontSize: 16,
+}));
+
+const CheckDone = styled(Done)(() => ({
+  fontSize: 18,
+  color: "black",
+  ml: -0.5,
+  mr: 0.5,
+  zIndex: 2,
+  pointerEvents: "none",
+  marginRight: 10,
+}));
 
 export default function IntroClub() {
   const [value, setValue] = useState([]);
+  const [isAll, setIsAll] = useState(false);
   return (
     <div>
       <div className={`${style.nav_menu}`}>
@@ -27,34 +69,68 @@ export default function IntroClub() {
         </div>
       </div>
       <div className={`${style.image_box}`}>동아리 소개 image</div>
-      <Button variant="outlined" color="inherit">
-        All
-      </Button>
-      <List
-        orientation="horizontal"
-        wrap
-        sx={{
-          "--ListItem-radius": "10px",
-          "--ListItem-minHeight": "32px",
-        }}
-      >
-        {["동아리", "학회", "동호회"].map((item, index) => (
-          <ListItem key={item}>
-            {value.includes(item) && (
-              <Done
-                fontSize="md"
-                color="inherit"
-                sx={{ ml: -0.5, mr: 0.5, zIndex: 2, pointerEvents: "none" }}
-              />
-            )}
+      <AllBox variant="outlined" color="inherit">
+        <Checkbox
+          label={
+            isAll ? (
+              <Typography sx={{ fontWeight: "bold" }}>ALL</Typography>
+            ) : (
+              "ALL"
+            )
+          }
+          disableIcon
+          overlay
+          checked={isAll}
+          variant={"none"}
+          onChange={(event) => {
+            if (event.target.checked) {
+              setIsAll(true);
+            } else {
+              setIsAll(false);
+            }
+          }}
+          slotProps={{
+            action: ({ checked }) => ({
+              sx: checked
+                ? {
+                    borderRadius: "10px",
+                    borderColor: "#7B7B7B",
+                    backgroundColor: "#E8DEF8",
+                  }
+                : {
+                    borderRadius: "10px",
+                    borderColor: "#7B7B7B",
+                  },
+            }),
+          }}
+        />
+      </AllBox>
 
+      <ButtonBox variant="solid" aria-label="outlined button group">
+        {["동아리", "학회", "동호회"].map((item, index) => (
+          <ClubCheckButton
+            key={item}
+            sx={{
+              borderTopLeftRadius: index === 0 ? "10px" : "0px",
+              borderBottomLeftRadius: index === 0 ? "10px" : "0px",
+              borderTopRightRadius: index === 2 ? "10px" : "0px",
+              borderBottomRightRadius: index === 2 ? "10px" : "0px",
+              borderColor: "#7B7B7B",
+            }}
+          >
+            {value.includes(item) && <CheckDone />}
             <Checkbox
-              size="sm"
               disableIcon
               overlay
-              label={item}
               checked={value.includes(item)}
-              variant={value.includes(item) ? "soft" : "outlined"}
+              label={
+                value.includes(item) ? (
+                  <Typography sx={{ fontWeight: "bold" }}>{item}</Typography>
+                ) : (
+                  item
+                )
+              }
+              variant={"none"}
               onChange={(event) => {
                 if (event.target.checked) {
                   setValue((val) => [...val, item]);
@@ -66,18 +142,26 @@ export default function IntroClub() {
                 action: ({ checked }) => ({
                   sx: checked
                     ? {
-                        border: "1px solid",
+                        borderTopLeftRadius: index === 0 ? "10px" : "0px",
+                        borderBottomLeftRadius: index === 0 ? "10px" : "0px",
+                        borderTopRightRadius: index === 2 ? "10px" : "0px",
+                        borderBottomRightRadius: index === 2 ? "10px" : "0px",
                         borderColor: "#7B7B7B",
                         backgroundColor: "#E8DEF8",
-                        color: "black",
                       }
-                    : { border: "1px solid", borderColor: "#7B7B7B" },
+                    : {
+                        borderTopLeftRadius: index === 0 ? "10px" : "0px",
+                        borderBottomLeftRadius: index === 0 ? "10px" : "0px",
+                        borderTopRightRadius: index === 2 ? "10px" : "0px",
+                        borderBottomRightRadius: index === 2 ? "10px" : "0px",
+                        borderColor: "#7B7B7B",
+                      },
                 }),
               }}
             />
-          </ListItem>
+          </ClubCheckButton>
         ))}
-      </List>
+      </ButtonBox>
     </div>
   );
 }
