@@ -118,16 +118,31 @@ export default function IntroClub() {
               borderColor: "#7B7B7B",
             }}
           >
-            {value.includes(item) && <CheckDone />}
+            {value.includes(item) && !isAll && <CheckDone />}
             <Checkbox
               disableIcon
+              disabled={isAll ? true : false}
               overlay
               checked={value.includes(item)}
               label={
                 value.includes(item) ? (
-                  <Typography sx={{ fontWeight: "bold" }}>{item}</Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: isAll ? "normal" : "bold",
+                      color: isAll ? "#8E8B92" : "black",
+                    }}
+                  >
+                    {item}
+                  </Typography>
                 ) : (
-                  item
+                  <Typography
+                    sx={{
+                      fontWeight: "normal",
+                      color: isAll ? "#8E8B92" : "black",
+                    }}
+                  >
+                    {item}
+                  </Typography>
                 )
               }
               variant={"none"}
@@ -147,7 +162,7 @@ export default function IntroClub() {
                         borderTopRightRadius: index === 2 ? "10px" : "0px",
                         borderBottomRightRadius: index === 2 ? "10px" : "0px",
                         borderColor: "#7B7B7B",
-                        backgroundColor: "#E8DEF8",
+                        backgroundColor: isAll ? "white" : "#E8DEF8",
                       }
                     : {
                         borderTopLeftRadius: index === 0 ? "10px" : "0px",
