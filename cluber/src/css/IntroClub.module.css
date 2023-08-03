@@ -28,3 +28,27 @@
   margin: 0 auto;
   display: flex;
 }
+
+.select_box {
+  width: 100%;
+  height: 115px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.line {
+  border: 0.5px solid;
+  border-color: rgba(121, 116, 126, 0.5);
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 0px;
+}
+
+.club_item {
+  width: 100%;
+  height: 350px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
