@@ -62,11 +62,11 @@ const AutocompleteBox = styled(Autocomplete)(() => ({
   margin: "10px",
 }));
 
-const clubs = [
-  { label: "Motion In Christ" },
-  { label: "하나님을 향한 춤" },
-  { label: "Amazing Story" },
-];
+// const clubs = [
+//   { label: "Motion In Christ" },
+//   { label: "하나님을 향한 춤" },
+//   { label: "Amazing Story" },
+// ];
 
 const SearchBox = styled(Button)(() => ({
   width: 80,
@@ -88,6 +88,16 @@ const ClubItem = styled(Paper)(() => ({
   borderRadius: "10px",
   margin: "20px",
 }));
+
+const clubs = [
+  {
+    id: 1,
+    name: "엠아씨",
+    categories: ["춤", "선교"],
+    imageUrl: "./img/mic.png",
+    description: "몸짓을 통해 하나님께 예배하는 선교단체",
+  },
+];
 
 export default function IntroClub() {
   const [value, setValue] = useState([]);
@@ -239,6 +249,12 @@ export default function IntroClub() {
         </SearchBox>
       </div>
       <hr className={`${style.line}`} />
+      {clubs.map((club, index) => (
+        <div key={index} className={`${style.club_item}`}>
+          <img src={club.imageUrl} width={200} />
+        </div>
+      ))}
+
       <div className={`${style.club_item}`}>
         <ClubItem elevation={2}></ClubItem>
         <ClubItem elevation={2}></ClubItem>

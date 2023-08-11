@@ -89,6 +89,21 @@ const ClubItem = styled(Paper)(() => ({
   margin: "20px",
 }));
 
+const Write_Recruiting = styled(Button)(() => ({
+  width: 150,
+  height: 45,
+  borderRadius: "10px",
+  backgroundColor: "#6100AF",
+  justifyContent: "center",
+  alignItems: "center",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: 16,
+  margin: "20px",
+  marginBottom: "0px",
+  float: "right",
+}));
+
 export default function Recruiting() {
   const [value, setValue] = useState([]);
   const [isAll, setIsAll] = useState(false);
@@ -239,10 +254,18 @@ export default function Recruiting() {
         </SearchBox>
       </div>
       <hr className={`${style.line}`} />
-      <div className={`${style.club_item}`}>
-        <ClubItem elevation={2}></ClubItem>
-        <ClubItem elevation={2}></ClubItem>
-        <ClubItem elevation={2}></ClubItem>
+      <div className={`${style.main_container}`}>
+        <Link to="/write_recruiting">
+          <Write_Recruiting variant="solid" color="inherit">
+            모집글 작성하기
+          </Write_Recruiting>
+        </Link>
+
+        <div className={`${style.club_item}`}>
+          <ClubItem elevation={2}></ClubItem>
+          <ClubItem elevation={2}></ClubItem>
+          <ClubItem elevation={2}></ClubItem>
+        </div>
       </div>
     </div>
   );

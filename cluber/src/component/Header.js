@@ -7,7 +7,9 @@ export default function Header() {
   return (
     <div>
       <div className={`${style.header}`}>
-        <div className={`${style.title}`}>Cluber</div>
+        <Link to="/" className={`${style.title}`}>
+          Cluber
+        </Link>
 
         <div className={`${style.home_rog}`}>
           <Link to="/" className={`${style.link}`}>
