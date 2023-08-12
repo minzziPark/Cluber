@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import style from "../css/WriteRecruiting.module.css";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material";
@@ -15,7 +15,6 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import useFetch from "../hooks/useFetch";
 
 const TitleBox = styled(TextField)(() => ({
   marginTop: "30px",
@@ -98,19 +97,25 @@ export default function Write_Recruiting() {
   const [endDate, setEndDate] = useState();
 
   function addRecruiting() {
-    //   fetch(`http://localhost:8080/api/recruit`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({}),
-    //   });
-    console.log(title);
-    console.log(imageUrl);
-    console.log(description);
-    console.log(clubName);
-    console.log(startDate);
-    console.log(endDate);
+    fetch(`http://localhost:8080/api/recruit`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        imageUrl: "imageUrl",
+        description: description,
+        clubName: clubName,
+        startDate: startDate,
+        endDate: endDate,
+        memberId: 2,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        alert("생성이 완료되었습니다.");
+      }
+    });
   }
 
   return (
@@ -240,6 +245,10 @@ export default function Write_Recruiting() {
                   minutes: renderTimeViewClock,
                   seconds: renderTimeViewClock,
                 }}
+                value={startDate}
+                onChange={(newValue) => {
+                  setStartDate(newValue);
+                }}
               />
               <DatePicker
                 label="모집 마감 날짜"
@@ -247,6 +256,10 @@ export default function Write_Recruiting() {
                   hours: null,
                   minutes: null,
                   seconds: null,
+                }}
+                value={endDate}
+                onChange={(newValue) => {
+                  setEndDate(newValue);
                 }}
               />
             </div>
@@ -263,6 +276,9 @@ export default function Write_Recruiting() {
           variant="outlined"
           multiline
           rows={15}
+          onChange={(event) => {
+            setDescription(event.target.value);
+          }}
         />
         <div>
           <div className={`${style.img_font}`}>이미지 추가</div>
