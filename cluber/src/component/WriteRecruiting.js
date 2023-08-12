@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import style from "../css/WriteRecruiting.module.css";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material";
@@ -15,6 +15,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import useFetch from "../hooks/useFetch";
 
 const TitleBox = styled(TextField)(() => ({
   marginTop: "30px",
@@ -73,8 +74,45 @@ const FabButton = styled(Fab)(() => ({
   backgroundColor: "#E8DEF8",
 }));
 
+const SaveRecruiting = styled(Button)(() => ({
+  width: 180,
+  height: 45,
+  borderRadius: "10px",
+  backgroundColor: "#6100AF",
+  justifyContent: "center",
+  alignItems: "center",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: 17,
+  marginTop: "50px",
+  marginBottom: "10px",
+}));
+
 export default function Write_Recruiting() {
   const [value, setValue] = useState([]);
+  const [title, setTitle] = useState();
+  const [imageUrl, setImageUrl] = useState();
+  const [description, setDescription] = useState();
+  const [clubName, setClubName] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
+  function addRecruiting() {
+    //   fetch(`http://localhost:8080/api/recruit`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({}),
+    //   });
+    console.log(title);
+    console.log(imageUrl);
+    console.log(description);
+    console.log(clubName);
+    console.log(startDate);
+    console.log(endDate);
+  }
+
   return (
     <div>
       <div className={`${style.nav_menu}`}>
@@ -101,7 +139,11 @@ export default function Write_Recruiting() {
           id="outlined-basic"
           label="제목을 입력하세요."
           variant="outlined"
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
         />
+
         <div className={`${style.sub_container}`}>
           <ButtonBox variant="solid" aria-label="outlined button group">
             {["동아리", "학회", "동호회"].map((item, index) => (
@@ -115,10 +157,11 @@ export default function Write_Recruiting() {
                   borderColor: "#7B7B7B",
                 }}
               >
-                {value.includes(item) && <CheckDone />}
+                {value.includes(item) && <CheckDone variant="outlined" />}
                 <Checkbox
                   disableIcon
                   overlay
+                  variant={"none"}
                   checked={value.includes(item)}
                   label={
                     value.includes(item) ? (
@@ -141,7 +184,7 @@ export default function Write_Recruiting() {
                       </Typography>
                     )
                   }
-                  variant={"none"}
+                  //   variant={"none"}
                   onChange={(event) => {
                     if (event.target.checked) {
                       setValue((val) => [item]);
@@ -181,6 +224,9 @@ export default function Write_Recruiting() {
             id="outlined-basic"
             label="공동체 이름을 입력하세요."
             variant="outlined"
+            onChange={(event) => {
+              setClubName(event.target.value);
+            }}
           />
         </div>
 
@@ -223,6 +269,15 @@ export default function Write_Recruiting() {
           <FabButton aria-label="add">
             <AddIcon />
           </FabButton>
+        </div>
+        <div className={`${style.sub_container2}`}>
+          <SaveRecruiting
+            variant="solid"
+            color="inherit"
+            onClick={addRecruiting}
+          >
+            모집글 게시하기
+          </SaveRecruiting>
         </div>
       </div>
     </div>
