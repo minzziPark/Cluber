@@ -52,3 +52,8 @@
   align-items: center;
   display: flex;
 }
+
+.main_container {
+  width: 1450px;
+  margin: 0 auto;
+}

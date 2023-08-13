@@ -7,6 +7,7 @@ import Footer from "./component/Footer";
 import Rogin from "./component/Rogin";
 import style from "./css/App.module.css";
 import Write_Recruiting from "./component/WriteRecruiting";
+import Write_IntroClub from "./component/WriteIntroClub";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/login_page" element={<Rogin />} />
           <Route path="/write_recruiting" element={<Write_Recruiting />} />
+          <Route path="/write_introclub" element={<Write_IntroClub />} />
         </Routes>
         <Footer />
       </div>
