@@ -10,6 +10,7 @@ import Checkbox from "@mui/joy/Checkbox";
 import Typography from "@mui/joy/Typography";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const TitleBox = styled(TextField)(() => ({
   marginTop: "30px",
@@ -76,7 +77,7 @@ export default function WriteIntroClub() {
   const [name, setName] = useState();
   const [imageUrl, setImageUrl] = useState("imageUrl");
   const [description, setDescription] = useState();
-  const [categories, setCategories] = useState(["aaa", "bbb"]);
+  const [category, setCategory] = useState(["aaa", "bbb"]);
   const [memberId, setMemberId] = useState(2);
 
   function addClub() {
@@ -89,7 +90,7 @@ export default function WriteIntroClub() {
         name: name,
         imageUrl: imageUrl,
         description: description,
-        categories: categories,
+        categories: category,
         memberId: memberId,
       }),
     }).then((res) => {
@@ -209,6 +210,24 @@ export default function WriteIntroClub() {
           </ButtonBox>
         </div>
 
+        <Autocomplete
+          multiple
+          onChange={(event, newValue) => {
+            setCategory(newValue);
+          }}
+          id="tags-outlined"
+          options={categories}
+          filterSelectedOptions
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="카테고리 선택"
+              placeholder="카테고리"
+            />
+          )}
+          className={`${style.category_box}`}
+        />
+
         <TextBox
           id="outlined-basic"
           label="내용을 입력하세요."
@@ -234,3 +253,32 @@ export default function WriteIntroClub() {
     </div>
   );
 }
+
+const categories = [
+  "공연",
+  "사역",
+  "힙합",
+  "음악",
+  "태권도",
+  "정치",
+  "경제",
+  "경영",
+  "춤",
+  "연극",
+  "노래",
+  "밴드",
+  "운동",
+  "공부",
+  "글로벌리더십학부",
+  "기계제어공학부",
+  "국제어문학부",
+  "콘텐츠융합디자인학부",
+  "경영경제학부",
+  "생명과학부",
+  "법학부",
+  "전산전자공학부",
+  "커뮤니케이션학부",
+  "상담심리사회복지학부",
+  "공간환경시스템공학부",
+  "ICT창업학부",
+];
